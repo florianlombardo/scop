@@ -22,6 +22,9 @@
     <Filter Include="Fichiers d%27en-tête\GL">
       <UniqueIdentifier>{9610d817-73e4-4b33-8595-c583f0146373}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers de ressources\shader">
+      <UniqueIdentifier>{43d2c0ea-e582-4ab5-87ed-75bcaa670dcc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\SDL2\begin_code.h">
@@ -276,6 +279,15 @@
     <ClInclude Include="include\GL\glew.h">
       <Filter>Fichiers d%27en-tête\GL</Filter>
     </ClInclude>
+    <ClInclude Include="include\object.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\parser.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\render.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\SDL2.lib">
@@ -298,9 +310,27 @@
     <None Include="glew32.dll">
       <Filter>Fichiers de ressources</Filter>
     </None>
+    <None Include="shader\basic.frag">
+      <Filter>Fichiers de ressources\shader</Filter>
+    </None>
+    <None Include="shader\basic.vert">
+      <Filter>Fichiers de ressources\shader</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.c">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\init.c">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\parser.c">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render.c">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\quit.c">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
