@@ -11,30 +11,27 @@ OBJ_DEBUG_DIR = obj/debug/
 OBJ_DEBUG = $(addprefix $(OBJ_DEBUG_DIR), $(notdir $(SRC:.c=.o)))
 
 INCLUDE = include/
+LIB = lib/
 
 LIBFT_DIR = libft/
 LIBFT_FILE = libft.a
 LIBFT = $(addprefix $(LIBFT_DIR), $(LIBFT_FILE))
 
-MLX_DIR = minilibx/
-MLX_FILE = libmlx.a
-MLX = $(addprefix $(MLX_DIR), $(MLX_FILE))
-
 #--- COMPILATION ---#
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I$(INCLUDE) -I$(LIBFT_DIR) -I$(MLX_DIR)
-LIBFLAGS = -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit -lm
+CC = clang
+CFLAGS = -Wall -Wextra -Werror -I$(INCLUDE) -I$(LIBFT_DIR) -Wl,-rpath,$(LIB) -D_REENTRANT
+LIBFLAGS = -lm -L$(LIBFT_DIR) -lft -L$(LIB) -lSDL2 -lGLEW -lGL
 
 #--- REGLES ---#
 
 vpath %c $(sort $(dir $(SRC)))
 
-.PHONY: all clean fclean re
+.PHONY: all debug clean fclean dclean re
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT) $(MLX) $(INCLUDE)
+$(NAME): $(OBJ) $(LIBFT) $(INCLUDE)
 	$(CC) $(CFLAGS) $(LIBFLAGS) $(OBJ) -o $@
 
 $(OBJ): $(OBJ_DIR)%.o: %.c $(INCLUDE)
@@ -49,15 +46,11 @@ $(OBJ_DEBUG): $(OBJ_DEBUG_DIR)%.o: %.c $(INCLUDE)
 $(LIBFT):
 	make -C $(LIBFT_DIR)
 
-$(MLX):
-	make -C $(MLX_DIR)
-
-debug: $(OBJ_DEBUG) $(LIBFT) $(MLX) $(INCLUDE)
+debug: $(OBJ_DEBUG) $(LIBFT) $(INCLUDE)
 	$(CC) $(CFLAGS) -g $(LIBFLAGS) $(OBJ_DEBUG) -o $(NAME)
 
 clean:
 	make -C $(LIBFT_DIR) clean
-	make -C $(MLX_DIR) clean
 	rm -rf $(OBJ) $(OBJ_DIR)
 
 fclean: clean

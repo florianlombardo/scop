@@ -1,15 +1,15 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   get_next_line.c                                  .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: jemagnie <marvin@le-101.fr>                +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/03/25 21:16:40 by jemagnie     #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/28 15:00:43 by jemagnie    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: user42 <user42@student.42lyon.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/25 21:16:40 by jemagnie          #+#    #+#             */
+/*   Updated: 2020/09/29 19:08:05 by user42           ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
+
 
 #include "libft.h"
 
@@ -45,14 +45,8 @@ static int		ft_memchr_int(const char *mem, const unsigned char c, size_t n)
 static char		*ft_strjoin_free(char *s1, char *s2, int lens2)
 {
 	char	*str;
-	int		i;
-	int		a;
-	int		b;
 	int		lens1;
 
-	i = 0;
-	a = 0;
-	b = 0;
 	if (!s1 || !s2)
 		return (NULL);
 	lens1 = ft_strlen(s1);

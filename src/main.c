@@ -3,21 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flombard <flombard@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 18:46:14 by flombard          #+#    #+#             */
-/*   Updated: 2020/03/05 16:10:35 by flombard         ###   ########lyon.fr   */
+/*   Updated: 2020/09/29 21:32:21 by user42           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include "libft.h"
-#include "mlx.h"
-#include "keys.h"
-#include "env.h"
-#include "display.h"
-#include "core.h"
 
 static int	ends_with(char *str, char *to_find)
 {
@@ -32,22 +26,10 @@ static int	ends_with(char *str, char *to_find)
 
 int			main(int argc, char *argv[])
 {
-	t_env	e;
-
-	if (argc != 2 || ends_with(argv[1], ".scop") != 0)
+	if (argc != 2 || ends_with(argv[1], ".obj") != 0)
 	{
-		ft_putendl("usage: ./scop file.scop");
+		ft_putendl("usage: ./scop file.obj");
 		return (EXIT_FAILURE);
 	}
-	if (!(e.dis = init_display()))
-		return (EXIT_FAILURE);
-	if (!(e.core = init_core()))
-	{
-		quit_display(&(e.dis));
-		return (EXIT_FAILURE);
-	}
-	mlx_loop_hook(e.dis->mlx, loop_hook, &e);
-	mlx_hook(e.dis->win, CLOSE, CLOSEMASK, close_hook, &e);
-	mlx_loop(e.dis->mlx);
-	return (EXIT_SUCCESS);
+	return 0;
 }
